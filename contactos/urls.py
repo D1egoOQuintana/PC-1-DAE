@@ -6,5 +6,4 @@ urlpatterns = [
     path('nuevo/', views.crear_contacto, name='crear_contacto'),
     path('editar/<int:id>/', views.editar_contacto, name='editar_contacto'),
     path('eliminar/<int:id>/', views.eliminar_contacto, name='eliminar_contacto'),
-    path('exportar/', views.exportar_contactos_csv, name='exportar_contactos'),
 ]
