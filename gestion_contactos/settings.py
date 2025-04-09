@@ -9,7 +9,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Seguridad
 SECRET_KEY = 'tu_clave_secreta_aqui'
 DEBUG = True
-ALLOWED_HOSTS = ['tu_dominio.render.com']  # Cambia esto por tu dominio en Render
+ALLOWED_HOSTS = [
+    'tu_dominio.render.com',
+    '127.0.0.1',  # Agrega esta línea
+    'localhost',  # Opcional, para pruebas locales
+]
 
 # Aplicaciones instaladas
 INSTALLED_APPS = [
