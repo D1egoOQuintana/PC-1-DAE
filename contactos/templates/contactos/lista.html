@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Contactos</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Lista de Contactos</h1>
+        <a href="{% url 'crear_contacto' %}" class="btn btn-primary mb-3">Nuevo Contacto</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>Dirección</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contacto in contactos %}
+                <tr>
+                    <td>{{ contacto.nombre }}</td>
+                    <td>{{ contacto.email }}</td>
+                    <td>{{ contacto.telefono }}</td>
+                    <td>{{ contacto.direccion }}</td>
+                    <td>
+                        <a href="{% url 'editar_contacto' contacto.id %}" class="btn btn-warning">Editar</a>
+                        <a href="{% url 'eliminar_contacto' contacto.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No hay contactos disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
