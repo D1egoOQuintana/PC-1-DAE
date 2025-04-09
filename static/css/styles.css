@@ -1,15 +1,18 @@
 /* Estilos generales para la aplicación de gestión de contactos */
 
+/* Animaciones generales */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
     margin: 0;
     padding: 20px;
     margin-bottom: 60px; /* Espacio para el footer fijo */
+    animation: fadeIn 1s ease-in-out;
 }
 
 h1 {
     color: #343a40;
+    animation: slideDown 0.8s ease-in-out;
 }
 
 .table {
@@ -18,6 +21,7 @@ h1 {
     color: #212529;
     border-radius: 5px;
     overflow: hidden;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .table th,
@@ -35,10 +39,16 @@ h1 {
 .btn {
     margin: 5px;
     border-radius: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.1);
 }
 
 .alert {
     margin-top: 20px;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .navbar-brand {
@@ -57,4 +67,25 @@ footer {
 
 .container {
     max-width: 960px;
+}
+
+/* Keyframes para animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
