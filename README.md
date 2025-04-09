@@ -41,13 +41,6 @@ gestion-contactos/
 - **Editar Contacto**: Modifica la información de un contacto existente.
 - **Eliminar Contacto**: Elimina un contacto después de una confirmación.
 
-## Despliegue
-
-Para desplegar la aplicación en Render.com, asegúrate de:
-
-1. Configurar `ALLOWED_HOSTS` en `settings.py` para incluir el dominio de Render.
-2. Asegurarte de que los archivos estáticos se sirvan correctamente, configurando `STATIC_URL` y `STATIC_ROOT`.
-3. Incluir `whitenoise` en `requirements.txt` para manejar archivos estáticos en producción.
 
 ## Instalación
 
