@@ -3,8 +3,12 @@ from .models import Contacto
 from .forms import ContactoForm
 
 def listar_contactos(request):
-    contactos = Contacto.objects.all()
-    return render(request, 'contactos/lista.html', {'contactos': contactos})
+    query = request.GET.get('q')  # Obtén el término de búsqueda desde la URL
+    if query:
+        contactos = Contacto.objects.filter(nombre__icontains=query)  # Filtra por nombre
+    else:
+        contactos = Contacto.objects.all()  # Muestra todos los contactos
+    return render(request, 'contactos/lista.html', {'contactos': contactos, 'query': query})
 
 def crear_contacto(request):
     if request.method == 'POST':
