@@ -1,10 +1,11 @@
 /* Estilos generales para la aplicación de gestión de contactos */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     background-color: #f8f9fa;
     margin: 0;
     padding: 20px;
+    margin-bottom: 60px; /* Espacio para el footer fijo */
 }
 
 h1 {
@@ -15,6 +16,8 @@ h1 {
     width: 100%;
     margin-bottom: 1rem;
     color: #212529;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .table th,
@@ -31,8 +34,27 @@ h1 {
 
 .btn {
     margin: 5px;
+    border-radius: 20px;
 }
 
 .alert {
     margin-top: 20px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.container {
+    max-width: 960px;
 }

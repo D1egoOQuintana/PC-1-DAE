@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ contacto.nombre|default:"Nuevo Contacto" }}{% endblock %}
+
+{% block content %}
+<h1 class="text-center">{% if contacto %}Editar{% else %}Nuevo{% endif %} Contacto</h1>
+<form method="post" class="p-4 shadow rounded bg-light">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" value="{{ contacto.nombre|default:'' }}" placeholder="Ingresa el nombre" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ contacto.email|default:'' }}" placeholder="Ingresa el email" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control" id="telefono" name="telefono" value="{{ contacto.telefono|default:'' }}" placeholder="Ingresa el teléfono" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="direccion">Dirección</label>
+            <input type="text" class="form-control" id="direccion" name="direccion" value="{{ contacto.direccion|default:'' }}" placeholder="Ingresa la dirección" required>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-block">{% if contacto %}Actualizar{% else %}Crear{% endif %}</button>
+    <a href="{% url 'listar_contactos' %}" class="btn btn-secondary btn-block">Cancelar</a>
+</form>
+{% endblock %}

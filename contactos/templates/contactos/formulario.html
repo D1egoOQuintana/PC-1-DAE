@@ -1,36 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %} <!-- Carga las etiquetas estáticas -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>{% if contacto %}Editar{% else %}Nuevo{% endif %} Contacto</title>
-</head>
-<body>
-    <div class="container">
-        <h1>{% if contacto %}Editar{% else %}Nuevo{% endif %} Contacto</h1>
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ contacto.nombre|default:'' }}" required>
+{% extends 'base.html' %}
+
+{% block title %}{% if contacto.id %}Editar Contacto{% else %}Nuevo Contacto{% endif %}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center">{% if contacto.id %}Editar Contacto{% else %}Nuevo Contacto{% endif %}</h1>
+    <form method="post" class="p-4 shadow rounded bg-light">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="{{ form.nombre.value|default:'' }}" placeholder="Ingresa el nombre" required>
             </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ contacto.email|default:'' }}" required>
+            <div class="form-group col-md-6">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ form.email.value|default:'' }}" placeholder="Ingresa el email" required>
             </div>
-            <div class="form-group">
-                <label for="telefono">Teléfono:</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" value="{{ contacto.telefono|default:'' }}" required>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="telefono">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" value="{{ form.telefono.value|default:'' }}" placeholder="Ingresa el teléfono" required>
             </div>
-            <div class="form-group">
-                <label for="direccion">Dirección:</label>
-                <input type="text" class="form-control" id="direccion" name="direccion" value="{{ contacto.direccion|default:'' }}" required>
+            <div class="form-group col-md-6">
+                <label for="direccion">Dirección</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" value="{{ form.direccion.value|default:'' }}" placeholder="Ingresa la dirección" required>
             </div>
-            <button type="submit" class="btn btn-primary">{% if contacto %}Actualizar{% else %}Crear{% endif %}</button>
-            <a href="{% url 'listar_contactos' %}" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
-</body>
-</html>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">{% if contacto.id %}Actualizar{% else %}Crear{% endif %}</button>
+        <a href="{% url 'listar_contactos' %}" class="btn btn-secondary btn-block">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

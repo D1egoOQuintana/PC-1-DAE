@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    {% load static %} <!-- Carga las etiquetas estáticas -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <title>Eliminar Contacto</title>
-</head>
-<body>
-    <div class="container">
-        <h1>Eliminar Contacto</h1>
-        <p>¿Estás seguro de que deseas eliminar el contacto "{{ contacto.nombre }}"?</p>
-        <form method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Eliminar</button>
-            <a href="{% url 'listar_contactos' %}" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Contacto{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 class="text-center text-danger">Eliminar Contacto</h1>
+    <p class="text-center">¿Estás seguro de que deseas eliminar el contacto <strong>{{ contacto.nombre }}</strong>?</p>
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'listar_contactos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

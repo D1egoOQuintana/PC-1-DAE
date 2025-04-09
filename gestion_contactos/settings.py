@@ -91,6 +91,9 @@ USE_TZ = True
 
 # Archivos estáticos
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Asegúrate de que esta línea esté presente
+]
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # Para servir archivos estáticos en producción
 
 # Configuración de archivos estáticos
